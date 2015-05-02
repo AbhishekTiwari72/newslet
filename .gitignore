@@ -1,0 +1,4 @@
+# ignore
+/manage.py
+/btp/settings.py
+!.gitignore
