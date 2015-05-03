@@ -113,7 +113,7 @@ def auth_view(request):
 		return HttpResponseRedirect('/blog/invalid')
 
 def login(request):
-	if request.session['username'] != "none" and request.session['username'] != "" :
+	if 'username' in request.session and request.session['username'] != "none" and request.session['username'] != "" :
 		return HttpResponseRedirect('/news/')
 	else:
 		return render(request, 'login.html')
