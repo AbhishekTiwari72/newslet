@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 {% load staticfiles %}
 <head>
-<title>The Web News - Demo Page</title>
+<title>The Web News - Contact</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="stylesheet" type="text/css" href="{% static "news/css/style.css" %}" />
 <!--[if lte IE 6]><link rel="stylesheet" type="text/css" href="ie.css" /><![endif]-->
@@ -41,36 +41,36 @@
   <div id="content">
     <!-- begin post -->
     <div class="single">
-      <h2>Sample Page</h2>
-      <p>Ristiedonec nisl tellus pellus vel lobortor cursus quis semper sapibus curabitudin. Massacondimentum amet intesque ullamcorper facilis congue dolor amet ligula justo non.</p>
-      <p><img class="alignright" src="images/200x150.gif" width="200" height="150" alt="" /></p>
-      <p>Consequeet tor massa et tellentesque nasce et laorem mauristiquam mus sed. Odiopartur quisque nisl pellus dictus auctor ant quis odio nam sed.</p>
-      <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur quam augue, vehicula quis, tincidunt vel, varius vitae, nulla. Sed convallis orci. Duis libero orci, pretium a, <a href="http://all-free-download.com/free-website-templates/">convallis quis</a>, pellentesque a, dolor. Curabitur vitae nisi non dolor vestibulum consequat.</p>
-      <p>Aliquatpretium antesque accumst euismod nunc vitae cras interdum sed donec ipsum. Integetnunc cumst vel gravida sit accumst lobortor congue accumst estas et. Laciliswisi cursus sed sociis curabitur intesque orci phasellus purus estibulum sagittis. Nuncut congue consequat ligula consecteturpis et ipsum sed id id augue. Curabitaesit orci laoreet libero vestas sit faucibus iacus curabitudin vestas tellus.</p>
-      <blockquote>
-        <p>Proin vestibulum. Ut ligula. Nullam sed dolor id odio volutpat pulvinar. Integer a leo. In et eros at neque pretium sagittis. Sed sodales lorem a ipsum suscipit gravida. Ut fringilla placerat arcu. Phasellus imperdiet. Mauris ac justo et turpis pharetra vulputate.</p>
-      </blockquote>
-      <p><cite><a href="http://all-free-download.com/free-website-templates/">Quote Source</a></cite></p>
-      <p>Inquisquet urna proin vel volutpat velit tellus vivamus nas nam ac. Atauctortor ligula nulla volutpat laorem a sed curabitur et congue enim. Faciniacurabitudin estibulum montesque consequam sent phasellentesque feugiat tristibulum et curabitur aliquat. Vestpartur ligula urna eu curabitae egestassa nibh elit.</p>
-      <h3>An Ordered List</h3>
-      <ol>
-        <li>Vestibulum in mauris semper tortor interdum ultrices.</li>
-        <li>Sed vel lorem et justo laoreet bibendum. Donec dictum.</li>
-        <li>Etiam massa libero, lacinia at, commodo in, tincidunt a, purus.</li>
-        <li>Praesent volutpat eros quis enim blandit tincidunt.</li>
-        <li>Aenean eu libero nec lectus ultricies laoreet. Donec rutrum, nisi vel egestas ultrices, ipsum urna sagittis libero, vitae vestibulum dui dolor vel velit.</li>
-      </ol>
-      <p>Inquisquet urna proin vel volutpat velit tellus vivamus nas nam ac. Atauctortor ligula nulla volutpat laorem a sed curabitur et congue enim. Faciniacurabitudin estibulum montesque consequam sent phasellentesque feugiat tristibulum et curabitur aliquat. Vestpartur ligula urna eu curabitae egestassa nibh elit.</p>
-      <h3>An Unordered List</h3>
-      <ul>
-        <li>Vestibulum in mauris semper tortor interdum ultrices.</li>
-        <li>Sed vel lorem et justo laoreet bibendum. Donec dictum.</li>
-        <li>Etiam massa libero, lacinia at, commodo in, tincidunt a, purus.</li>
-        <li>Praesent volutpat eros quis enim blandit tincidunt.</li>
-        <li>Aenean eu libero nec lectus ultricies laoreet. Donec rutrum, nisi vel egestas ultrices, ipsum urna sagittis libero, vitae vestibulum dui dolor vel velit.</li>
-      </ul>
+      <h2>Contact Us</h2>
+      <p>Idnec nulla fuscinia ridictus nunc et morbi at morbi senean tincidunt. Antsempus morbi quis in sempus convallis dui vestie eu phasellentesquet nam. Pulvinareipsum sit nibh id nas eu magnisse alique id nam curabitur. Etenim consequam nec ant senean leo morbi urna velit rutrum consectum. Sedpretium nulla vel ero liberos facilis dis cursus adipiscing lacus intesque.</p>
     </div>
     <!-- end post -->
+    <!-- begin comments -->
+    <div id="comments">
+      <div id="respond">
+        <form action="http://all-free-download.com/free-website-templates/" method="post" id="commentform">
+          <p>
+            <input type="text" name="author" id="author" value="" size="22" tabindex="1" />
+            <label for="author"><small>Name (required)</small></label>
+          </p>
+          <p>
+            <input type="text" name="email" id="email" value="" size="22" tabindex="2" />
+            <label for="email"><small>Mail (will not be published) (required)</small></label>
+          </p>
+          <p>
+            <input type="text" name="url" id="url" value="" size="22" tabindex="3" />
+            <label for="url"><small>Website</small></label>
+          </p>
+          <p>
+            <textarea name="comment" id="comment" cols="100%" rows="10" tabindex="4"></textarea>
+          </p>
+          <p>
+            <button name="submit" type="submit" id="submit">Submit Comment</button>
+          </p>
+        </form>
+      </div>
+    </div>
+    <!-- end comments -->
   </div>
   <!-- END content -->
   <!-- BEGIN sidebar -->

@@ -1,0 +1,362 @@
+[
+    {
+        "pk": 1, 
+        "model": "news.categories", 
+        "fields": {
+            "category": "Business", 
+            "occurences": 388
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "news.categories", 
+        "fields": {
+            "category": "Football", 
+            "occurences": 131
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "news.categories", 
+        "fields": {
+            "category": "Comment is free", 
+            "occurences": 131
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "news.categories", 
+        "fields": {
+            "category": "US news", 
+            "occurences": 73
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "news.categories", 
+        "fields": {
+            "category": "Education", 
+            "occurences": 208
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "news.categories", 
+        "fields": {
+            "category": "World news", 
+            "occurences": 536
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "news.categories", 
+        "fields": {
+            "category": "Technology", 
+            "occurences": 350
+        }
+    }, 
+    {
+        "pk": 8, 
+        "model": "news.categories", 
+        "fields": {
+            "category": "Television & radio", 
+            "occurences": 102
+        }
+    }, 
+    {
+        "pk": 9, 
+        "model": "news.categories", 
+        "fields": {
+            "category": "Film", 
+            "occurences": 212
+        }
+    }, 
+    {
+        "pk": 10, 
+        "model": "news.categories", 
+        "fields": {
+            "category": "Life and style", 
+            "occurences": 277
+        }
+    }, 
+    {
+        "pk": 11, 
+        "model": "news.categories", 
+        "fields": {
+            "category": "Travel", 
+            "occurences": 167
+        }
+    }, 
+    {
+        "pk": 12, 
+        "model": "news.categories", 
+        "fields": {
+            "category": "Society", 
+            "occurences": 181
+        }
+    }, 
+    {
+        "pk": 13, 
+        "model": "news.categories", 
+        "fields": {
+            "category": "Environment", 
+            "occurences": 215
+        }
+    }, 
+    {
+        "pk": 14, 
+        "model": "news.categories", 
+        "fields": {
+            "category": "UK news", 
+            "occurences": 194
+        }
+    }, 
+    {
+        "pk": 15, 
+        "model": "news.categories", 
+        "fields": {
+            "category": "Money", 
+            "occurences": 150
+        }
+    }, 
+    {
+        "pk": 16, 
+        "model": "news.categories", 
+        "fields": {
+            "category": "Science", 
+            "occurences": 134
+        }
+    }, 
+    {
+        "pk": 17, 
+        "model": "news.categories", 
+        "fields": {
+            "category": "Music", 
+            "occurences": 219
+        }
+    }, 
+    {
+        "pk": 18, 
+        "model": "news.categories", 
+        "fields": {
+            "category": "Art and design", 
+            "occurences": 52
+        }
+    }, 
+    {
+        "pk": 19, 
+        "model": "news.categories", 
+        "fields": {
+            "category": "Media", 
+            "occurences": 254
+        }
+    }, 
+    {
+        "pk": 20, 
+        "model": "news.categories", 
+        "fields": {
+            "category": "Sport", 
+            "occurences": 120
+        }
+    }, 
+    {
+        "pk": 21, 
+        "model": "news.categories", 
+        "fields": {
+            "category": "Stage", 
+            "occurences": 80
+        }
+    }, 
+    {
+        "pk": 22, 
+        "model": "news.categories", 
+        "fields": {
+            "category": "Politics", 
+            "occurences": 158
+        }
+    }, 
+    {
+        "pk": 23, 
+        "model": "news.categories", 
+        "fields": {
+            "category": "Books", 
+            "occurences": 123
+        }
+    }, 
+    {
+        "pk": 24, 
+        "model": "news.categories", 
+        "fields": {
+            "category": "News", 
+            "occurences": 27
+        }
+    }, 
+    {
+        "pk": 25, 
+        "model": "news.categories", 
+        "fields": {
+            "category": "Global development", 
+            "occurences": 5
+        }
+    }, 
+    {
+        "pk": 26, 
+        "model": "news.categories", 
+        "fields": {
+            "category": "Culture", 
+            "occurences": 39
+        }
+    }, 
+    {
+        "pk": 27, 
+        "model": "news.categories", 
+        "fields": {
+            "category": "Guardian Government Computing", 
+            "occurences": 22
+        }
+    }, 
+    {
+        "pk": 28, 
+        "model": "news.categories", 
+        "fields": {
+            "category": "Law", 
+            "occurences": 9
+        }
+    }, 
+    {
+        "pk": 29, 
+        "model": "news.categories", 
+        "fields": {
+            "category": "From the Guardian", 
+            "occurences": 15
+        }
+    }, 
+    {
+        "pk": 30, 
+        "model": "news.categories", 
+        "fields": {
+            "category": "Guardian Careers", 
+            "occurences": 31
+        }
+    }, 
+    {
+        "pk": 31, 
+        "model": "news.categories", 
+        "fields": {
+            "category": "Katine", 
+            "occurences": 39
+        }
+    }, 
+    {
+        "pk": 32, 
+        "model": "news.categories", 
+        "fields": {
+            "category": "From the Observer", 
+            "occurences": 9
+        }
+    }, 
+    {
+        "pk": 33, 
+        "model": "news.categories", 
+        "fields": {
+            "category": "We are the people", 
+            "occurences": 2
+        }
+    }, 
+    {
+        "pk": 34, 
+        "model": "news.categories", 
+        "fields": {
+            "category": "Weather", 
+            "occurences": 6
+        }
+    }, 
+    {
+        "pk": 35, 
+        "model": "news.categories", 
+        "fields": {
+            "category": "Total women's health", 
+            "occurences": 2
+        }
+    }, 
+    {
+        "pk": 36, 
+        "model": "news.categories", 
+        "fields": {
+            "category": "Enjoy England", 
+            "occurences": 13
+        }
+    }, 
+    {
+        "pk": 37, 
+        "model": "news.categories", 
+        "fields": {
+            "category": "Fashion", 
+            "occurences": 42
+        }
+    }, 
+    {
+        "pk": 38, 
+        "model": "news.categories", 
+        "fields": {
+            "category": "Urban Undiscovered", 
+            "occurences": 11
+        }
+    }, 
+    {
+        "pk": 39, 
+        "model": "news.categories", 
+        "fields": {
+            "category": "Vestas", 
+            "occurences": 1
+        }
+    }, 
+    {
+        "pk": 40, 
+        "model": "news.categories", 
+        "fields": {
+            "category": "Global", 
+            "occurences": 11
+        }
+    }, 
+    {
+        "pk": 41, 
+        "model": "news.categories", 
+        "fields": {
+            "category": "Help", 
+            "occurences": 2
+        }
+    }, 
+    {
+        "pk": 42, 
+        "model": "news.categories", 
+        "fields": {
+            "category": "Community", 
+            "occurences": 1
+        }
+    }, 
+    {
+        "pk": 43, 
+        "model": "news.categories", 
+        "fields": {
+            "category": "Eyewitness subscriber", 
+            "occurences": 2
+        }
+    }, 
+    {
+        "pk": 44, 
+        "model": "news.categories", 
+        "fields": {
+            "category": "Open Platform", 
+            "occurences": 1
+        }
+    }, 
+    {
+        "pk": 45, 
+        "model": "news.categories", 
+        "fields": {
+            "category": "Australia news", 
+            "occurences": 5
+        }
+    }
+]

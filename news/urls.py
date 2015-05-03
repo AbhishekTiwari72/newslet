@@ -12,8 +12,23 @@ urlpatterns=patterns('',
 					url(r'^$','news.views.articles'
 						),
 					url(r'^auth/$','news.views.auth_view'),
+
+					url(r'^login/$','news.views.login'),
 					
 					url(r'^logout/$','news.views.logout'),
+
+					url(r'^about/$','news.views.about'),
+
+					url(r'^page/$','news.views.page'),
+
+					url(r'^contact/$','news.views.contact'),
+
+					url(r'^(?P<docid>\d+)/$','news.views.article'),
+
+
+
+
+
 
 
 					)
