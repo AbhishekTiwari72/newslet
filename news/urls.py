@@ -25,6 +25,11 @@ urlpatterns=patterns('',
 
 					url(r'^(?P<docid>\d+)/$','news.views.article'),
 
+					url(r'^category/(?P<categoryName>[\w\-]+)/$','news.views.category'),
+
+					url(r'^like/(?P<docid>\d+)/(?P<userid>\d+)/$','news.views.like'),
+					url(r'^dislike/(?P<docid>\d+)/(?P<userid>\d+)/$','news.views.dislike'),
+
 
 
 
