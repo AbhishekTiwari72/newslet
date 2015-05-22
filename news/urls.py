@@ -29,7 +29,9 @@ urlpatterns=patterns('',
 
 					url(r'^like/(?P<docid>\d+)/(?P<userid>\d+)/$','news.views.like'),
 					url(r'^dislike/(?P<docid>\d+)/(?P<userid>\d+)/$','news.views.dislike'),
-
+					url(r'^register/$','news.views.register_user'),
+					url(r'^select_categories/$','news.views.select_categories'),
+					url(r'^catView/$','news.views.cat'),
 
 
 

@@ -6,6 +6,8 @@ from django.contrib import auth
 from django.core.context_processors import csrf
 from django.template.defaultfilters import slugify
 import csv
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import authenticate, login
 
 def articles(request):
 	# get the blog posts that are published
@@ -18,6 +20,14 @@ def articles(request):
 		session_user=request.session['username']
 		session_password=request.session['password']
 		# print session_user
+		#category View
+		CatFlag=0
+		for row in sheet[1:]:
+			if int(row[0]) == int(session_user):
+				CatFlag=1
+				break
+		if CatFlag==0:
+			return newUserCatView(request)
 		userDocs = Info.objects.filter(user_id=int(session_user))
 		flag = 0
 		for row in sheet[1:]:
@@ -191,6 +201,7 @@ def article(request, docid = 504):
 		session_user=request.session['username']
 		session_password=request.session['password']
 
+
 	l = Dataset.objects.filter(docid=docid)
 	newsArticle = list()
 	for x in l:
@@ -255,6 +266,21 @@ def article(request, docid = 504):
 				status="liked"
 		else:
 			#print "hhhhh"
+			#updating csv
+			sheet = list(csv.reader(open('news/csv/articlesDataset2.csv','rU')))
+	
+	
+			for row in sheet[1:]:
+				if ((int)(row[0]))==((int)(docid)):
+					row[10]=int(row[10])+1
+					break;
+	
+			sheet2 = open('news/csv/articlesDataset2.csv', 'w')
+			a = csv.writer(sheet2)
+
+			a.writerows(sheet)
+
+
 			p=Info(doc_id=docid,user_id=(int)(session_user),user_like=1)
 			#print p.user_id
 			#print p.user_like
@@ -347,11 +373,135 @@ def like(request,docid=504,userid=60):
 	t = Info.objects.get(doc_id=docid,user_id=userid)
 	t.user_like=2
 	t.save()
+	#updating csv
+	sheet = list(csv.reader(open('news/csv/articlesDataset2.csv','rU')))
+	
+	
+	for row in sheet[1:]:
+		if ((int)(row[0]))==((int)(docid)):
+			row[11]=int(row[11])+1
+			break;
+	
+	sheet2 = open('news/csv/articlesDataset2.csv', 'w')
+	a = csv.writer(sheet2)
+
+	a.writerows(sheet)
 	url="/news/"+docid
 	return HttpResponseRedirect(url)
 def dislike(request,docid=504,userid=60):
 	t = Info.objects.get(doc_id=docid,user_id=userid)
 	t.user_like=-1
 	t.save()
+	#updating csv
+	sheet = list(csv.reader(open('news/csv/articlesDataset2.csv','rU')))
+	
+	
+	for row in sheet[1:]:
+		if ((int)(row[0]))==((int)(docid)):
+			row[12]=int(row[12])+1
+			break;
+	
+	sheet2 = open('news/csv/articlesDataset2.csv', 'w')
+	a = csv.writer(sheet2)
+
+	a.writerows(sheet)
 	url="/news/"+docid
 	return HttpResponseRedirect(url)
+def register_user(request):
+	if request.method=='POST':
+		
+		form=UserCreationForm(request.POST)
+		if form.is_valid():
+			new_user=form.save()
+			new_user=authenticate(username=request.POST['username'],password=request.POST['password1'])
+			auth.login(request,new_user)
+			
+			
+			return HttpResponseRedirect('/news/select_categories')
+
+	args={}
+	args.update(csrf(request))
+	args['form']=UserCreationForm()
+	return render(request,'register.html',args)
+def select_categories(request):
+	username=request.user.username   
+	password=request.user.password
+	cat = Categories.objects.all().order_by("-occurences")
+	request.session['username']=request.user.username
+	request.session['password']=request.user.password
+	return render(request,'select_categories.html',{'username':username,'password':password, 'categories':cat})
+def cat(request):
+	v=request.POST.getlist('checkbox')
+	sheet = list(csv.reader(open('news/csv/newUserCategories.csv','rU')))
+	
+	data=[]
+	session_user=request.session['username']
+	data.append(int(session_user))
+	i=1
+	print v
+	for col in sheet[0][1:]:
+		if col in v:
+			data.append(1)
+		else:
+			data.append(0)
+		i+=1
+	sheet.append(data)
+
+	print sheet
+	print data
+	sheet2 = open('news/csv/newUserCategories.csv', 'w')
+	a = csv.writer(sheet2)
+
+	a.writerows(sheet)
+	return HttpResponseRedirect('/news/')
+def newUserCatView(request):
+	s = Hot.objects.all().order_by("-hottness")
+	sheet = list(csv.reader(open('news/csv/newUserCategories.csv','rU')))
+	cat=[]
+	session_user=request.session['username']
+	for row in sheet[1:]:
+		if int(row[0]) == int(session_user):
+			break;
+	i=1
+	for col in row[1:]:
+		if col=="1":
+			cat.append(sheet[0][i])
+		i+=1
+	i=0
+	list2=list()
+	for hot in s:
+		l=Dataset.objects.get(docid=hot.docid)
+		#print l.section
+		#print categoryName
+		list1=list()
+		
+		if (l.section in cat):
+			print l.section
+			#break;
+			list1.append(l.docid)
+			list1.append(l.headline)
+			list1.append(l.trailText)
+			list1.append(l.byline)
+			list1.append(l.body)
+			list1.append(l.webURL)
+			list1.append(l.published)
+			list1.append(l.imageLink)
+			list1.append(l.tags)
+			list1.append(l.section)
+			list1.append(l.clicks)
+			list1.append(l.upvotes)
+			list1.append(l.downvotes)
+			list2.append(list1)
+			i+=1
+		
+		if i==15:
+			#print ArticlesFromCategory
+			break;
+	catSide = Categories.objects.all().order_by("-occurences")
+
+	return render (request,'index.html',{'username':session_user, 'categories' : catSide,'list2':list2})
+
+
+	
+
+

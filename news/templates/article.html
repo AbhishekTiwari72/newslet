@@ -6,13 +6,13 @@
 	    <div class="single">
 	    	
 	      {% ifequal status|stringformat:"s" "liked" %}
-	      	Article already liked, Do you want to <a href="/news/dislike/{{article.0}}/{{username}}">dislike </a>
+	      	Article already liked
 	      {% endifequal %}
 	      {% ifequal status|stringformat:"s" "clicked" %}
 	      	<a href="/news/like/{{article.0}}/{{username}}">Like</a> or <a href="/news/dislike/{{article.0}}/{{username}}">Dislike</a>
 	      {% endifequal %}
 	      {% ifequal status|stringformat:"s" "dislike" %}
-	      	Article already disliked, Do you want to <a href="/news/like/{{article.0}}/{{username}}">like</a> 
+	      	Article already disliked
 	      {% endifequal %}
 	      <h2>{% autoescape off %}{{article.1}}{% endautoescape %}</h2>
 	      <p><strong>{% autoescape off %}{{article.2}}{% endautoescape %}</strong></p>

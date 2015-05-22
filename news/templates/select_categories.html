@@ -1,0 +1,16 @@
+{% extends "index.html" %}
+{% block content %}
+
+<h3> Thank you for Registering </h3>
+<h4> Please Select initial Categories </h4>
+
+
+<form action="/news/catView/" method="POST">{% csrf_token %}
+{% for cat in categories|slice:":50"%}
+    <input type="checkbox" class='form' value="{{ cat.category }}" name="checkbox" /> {{ cat.category }} 
+  </br>
+
+{% endfor %}
+<input type="submit" value="Submit" />
+</form>
+{% endblock %}
