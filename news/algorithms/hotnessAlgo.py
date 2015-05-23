@@ -6,9 +6,9 @@ from math import log
 
 epoch = datetime(1970, 1, 1)
 
-def epoch_seconds(yy,mm,dd):
+def epoch_seconds(date):
     """Returns the number of seconds from the epoch to date."""
-    date=datetime(yy,mm,dd)
+    # date=datetime(yy,mm,dd)
     td = date - epoch
     return td.days * 86400 + td.seconds + (float(td.microseconds) / 1000000)
 
@@ -22,11 +22,11 @@ def hot(ups, downs, clicks, date):
     s = score(int(ups), int(downs), int(clicks))
     order = log(max(abs(s), 1), 10)
     sign = 1 if s > 0 else -1 if s < 0 else 0
-    slist = date.split("-")
-
+    # slist = date.split("-")
+    date = date.replace(tzinfo=None)
     # print("slist")
     # print(slist)
-    seconds = epoch_seconds(int(slist[0]), int(slist[1]), int(slist[2][:2])) - 1199145600  #unix timestamp 01 jan 2008
+    seconds = epoch_seconds(date) - 1199145600  #unix timestamp 01 jan 2008
     return round(sign * order + seconds / 45000, 7)
 
 
