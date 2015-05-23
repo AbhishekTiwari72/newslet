@@ -1,5 +1,11 @@
 # Django settings for btp project.
 
+import djcelery
+djcelery.setup_loader()
+BROKER_URL = 'django://'
+
+CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -121,9 +127,11 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
-     'django.contrib.admin',
-     'news',
-     'south',
+    'django.contrib.admin',
+    'news',
+    'south',
+    'djcelery',
+    'kombu.transport.django',
     # Uncomment the next line to enable admin documentation:
     #'django.contrib.admindocs',
 )

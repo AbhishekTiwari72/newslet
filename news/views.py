@@ -8,6 +8,9 @@ from django.template.defaultfilters import slugify
 import csv
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login
+# import news.tasks import add
+
+# add.delay(2,2)
 
 def articles(request):
 	# get the blog posts that are published
@@ -109,7 +112,7 @@ def articles(request):
 		c={}
 		c.update(csrf(request))
 	#collaborative Filter
-	sheetForCollaborative = list(csv.reader(open('news/csv/funkSVD3.csv','rU')))
+	sheetForCollaborative = list(csv.reader(open('news/csv/funkSVD.csv','rU')))
 
 	if 'username' in request.session and request.session['username'] != "" and request.session['username'] != "none" :
 		session_user=request.session['username']
@@ -264,11 +267,9 @@ def article(request, docid = 504):
 				#print "h"
 			else:
 				status="liked"
+			
 		else:
-			#print "hhhhh"
-			#updating csv
 			sheet = list(csv.reader(open('news/csv/articlesDataset2.csv','rU')))
-	
 	
 			for row in sheet[1:]:
 				if ((int)(row[0]))==((int)(docid)):
@@ -279,8 +280,6 @@ def article(request, docid = 504):
 			a = csv.writer(sheet2)
 
 			a.writerows(sheet)
-
-
 			p=Info(doc_id=docid,user_id=(int)(session_user),user_like=1)
 			#print p.user_id
 			#print p.user_like
@@ -289,8 +288,23 @@ def article(request, docid = 504):
 			status="clicked"
 			#print status
 		return render(request, 'article.html', {'username': session_user, 'article': newsArticle, 'popular': list2 ,'status':status,'categories' : cat})
-	else:	 
-		return HttpResponseRedirect('/news/')
+	else:
+
+		sheet = list(csv.reader(open('news/csv/articlesDataset2.csv','rU')))
+		for row in sheet[1:]:
+			if ((int)(row[0]))==((int)(docid)):
+				row[10]=int(row[10])+1
+				break;
+
+		sheet2 = open('news/csv/articlesDataset2.csv', 'w')
+		a = csv.writer(sheet2)
+		a.writerows(sheet)
+
+		p = Dataset.objects.get(docid = docid)
+		p.clicks += 1
+		p.save()
+		status="unsigned"
+		return render(request, 'article.html', {'username': session_user, 'article': newsArticle, 'popular': list2 ,'status':status,'categories' : cat})
 
 
 def contact(request):
@@ -376,10 +390,10 @@ def like(request,docid=504,userid=60):
 	#updating csv
 	sheet = list(csv.reader(open('news/csv/articlesDataset2.csv','rU')))
 	
-	
 	for row in sheet[1:]:
 		if ((int)(row[0]))==((int)(docid)):
 			row[11]=int(row[11])+1
+			row[10]=int(row[10])+1
 			break;
 	
 	sheet2 = open('news/csv/articlesDataset2.csv', 'w')
@@ -388,25 +402,29 @@ def like(request,docid=504,userid=60):
 	a.writerows(sheet)
 	url="/news/"+docid
 	return HttpResponseRedirect(url)
+
+
 def dislike(request,docid=504,userid=60):
 	t = Info.objects.get(doc_id=docid,user_id=userid)
 	t.user_like=-1
 	t.save()
 	#updating csv
 	sheet = list(csv.reader(open('news/csv/articlesDataset2.csv','rU')))
-	
+
 	
 	for row in sheet[1:]:
-		if ((int)(row[0]))==((int)(docid)):
+		if ((int)(row[20]))==((int)(docid)) and (int)(row[23]) == userid:
 			row[12]=int(row[12])+1
 			break;
-	
+
+
 	sheet2 = open('news/csv/articlesDataset2.csv', 'w')
 	a = csv.writer(sheet2)
 
 	a.writerows(sheet)
 	url="/news/"+docid
 	return HttpResponseRedirect(url)
+
 def register_user(request):
 	if request.method=='POST':
 		
@@ -423,6 +441,8 @@ def register_user(request):
 	args.update(csrf(request))
 	args['form']=UserCreationForm()
 	return render(request,'register.html',args)
+
+
 def select_categories(request):
 	username=request.user.username   
 	password=request.user.password
@@ -430,6 +450,7 @@ def select_categories(request):
 	request.session['username']=request.user.username
 	request.session['password']=request.user.password
 	return render(request,'select_categories.html',{'username':username,'password':password, 'categories':cat})
+
 def cat(request):
 	v=request.POST.getlist('checkbox')
 	sheet = list(csv.reader(open('news/csv/newUserCategories.csv','rU')))
@@ -447,13 +468,13 @@ def cat(request):
 		i+=1
 	sheet.append(data)
 
-	print sheet
-	print data
 	sheet2 = open('news/csv/newUserCategories.csv', 'w')
 	a = csv.writer(sheet2)
 
 	a.writerows(sheet)
 	return HttpResponseRedirect('/news/')
+
+
 def newUserCatView(request):
 	s = Hot.objects.all().order_by("-hottness")
 	sheet = list(csv.reader(open('news/csv/newUserCategories.csv','rU')))

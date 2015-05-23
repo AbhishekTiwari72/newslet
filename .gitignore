@@ -1,2 +1,6 @@
 # ignore
 !.gitignore
+
+#celery
+celerybeat.pid
+celerybeat-schedule

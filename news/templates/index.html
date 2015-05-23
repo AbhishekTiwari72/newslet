@@ -100,67 +100,19 @@
       <div class="video"> <img src="{% static "news/images/_video.jpg"%}" alt="" /> </div> -->
       <!-- end featured video -->
       <!-- begin tags -->
-      <h2>Tags</h2>
+<!--       <h2>Tags</h2>
       <div class="tags"> </div>
-      <!-- end tags -->
+ -->      <!-- end tags -->
       <!-- BEGIN left -->
-      <div class="l sbar">
+       <div class="l sbar">
         <!-- begin categories -->
         <h2>Categories</h2>
         <ul>
-          <li><a href="#">Entertainment</a></li>
-          <li><a href="#">Fashion</a></li>
-          <li><a href="#">Internet</a></li>
-          <li><a href="#">Marketing</a></li>
-          <li><a href="#">Lifestyle</a></li>
-          <li><a href="#">Make Money</a></li>
-          <li><a href="#">Online</a></li>
-          <li><a href="#">Parenting</a></li>
+          {% for cat in categories %}
+
+            <li><a href="/news/category/{{ cat.category|slugify }}">{{ cat.category }}</a></li>
+      {% endfor %}
         </ul>
-        <!-- end categories -->
-        <!-- begin pages -->
-        <!-- <h2>Pages</h2>
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Archives</a></li>
-          <li><a href="#">Links</a></li>
-          <li><a href="#">Contact</a></li>
-          <li><a href="#">Sitemap</a></li>
-        </ul> -->
-        <!-- end pages -->
-      </div>
-      <!-- END left -->
-      <!-- BEGIN right -->
-      <div class="r sbar">
-        <!-- begin archives -->
-        <h2>Archives</h2>
-        <ul>
-          <li><a href="#">August 2008</a></li>
-          <li><a href="#">July 2008</a></li>
-          <li><a href="#">June 2008</a></li>
-          <li><a href="#">May 2008</a></li>
-          <li><a href="#">April 2008</a></li>
-          <li><a href="#">March 2008</a></li>
-        </ul>
-        <!-- end archives -->
-        <!-- begin blogroll -->
-        <!-- <h2>Blogroll</h2>
-        <ul>
-          <li><a href="#">Carlos</a></li>
-          <li><a href="#">Digital Point Forum</a></li>
-          <li><a href="#">Eric's Photo Gallery</a></li>
-          <li><a href="#">Fashion Trends</a></li>
-          <li><a href="#">Google Scoreboard</a></li>
-          <li><a href="#">Marketing Forum</a></li>
-        </ul> -->
-        <!-- end blogroll -->
-        <!-- begin meta -->
-        <!-- <h2>Meta</h2>
-        <ul>
-          <li><a href="#">Login</a></li>
-        </ul> -->
-        <!-- end meta -->
       </div>
       <!-- END right -->
     </div>

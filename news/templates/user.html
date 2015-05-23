@@ -96,7 +96,7 @@
       <h2>Popular Posts</h2>
       <ul>
         {% for item in popular|slice:":5" %}
-        <li><a href="{{item.0}}">{{item.1}}</a></li>
+        <li><a href="/news/{{item.0}}">{{item.1}}</a></li>
         {% endfor %}
       </ul>
       <!-- end popular posts -->
@@ -110,8 +110,8 @@
       <!-- end featured video -->
       <!-- begin tags -->
       
-      <div class="tags"> </div>
-      <!-- end tags -->
+<!--       <div class="tags"> </div>
+ -->      <!-- end tags -->
       <!-- BEGIN left -->
       <div class="l sbar">
         <!-- begin categories -->
@@ -122,18 +122,6 @@
             <li><a href="/news/category/{{ cat.category|slugify }}">{{ cat.category }}</a></li>
       {% endfor %}
         </ul>
-        <!-- end categories -->
-        <!-- begin pages -->
-        <!-- <h2>Pages</h2>
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Archives</a></li>
-          <li><a href="#">Links</a></li>
-          <li><a href="#">Contact</a></li>
-          <li><a href="#">Sitemap</a></li>
-        </ul> -->
-        <!-- end pages -->
       </div>
       <!-- END left -->
       <!-- BEGIN right -->
