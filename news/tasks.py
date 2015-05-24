@@ -14,16 +14,16 @@ def add(x, y):
 
 @task()
 def hotness():
-	sheet = list(csv.reader(open('news/csv/articlesDataset2.csv','rU')))
+	sheet = Dataset.objects.all()
 	sheet2 = open('news/csv/hotnessData.csv', 'wb')
 	a = csv.writer(sheet2)
 	a.writerow(['docid', 'date', 'hottness'])
-	for row in sheet[1:]:
-	    hottnessVal = hotnessAlgo.hot(row[11], row[12], row[10], row[6])
-	    hotObj = Hot.objects.get(docid=int(row[0]))
+	for row in sheet:
+	    hottnessVal = hotnessAlgo.hot(row.clicks, row.upvotes, row.downvotes, row.published)
+	    hotObj = Hot.objects.get(docid=row.docid)
 	    hotObj.hottness = hottnessVal
 	    hotObj.save()
-	    a.writerow([row[0], row[6], hottnessVal])
+	    a.writerow([row.docid, row.published, hottnessVal])
 	sheet2.close()
 	return "suscess"
 

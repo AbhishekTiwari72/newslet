@@ -1,2 +1,11 @@
 # ignore
 !.gitignore
+
+#celery
+celerybeat.pid
+celerybeat-schedule
+
+
+#migrations
+news/migrations/*.py
+news/migrations/*.pyc

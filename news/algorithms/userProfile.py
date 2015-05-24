@@ -4,7 +4,6 @@ from news.models import Hot,Dataset,Categories,Info
 
 def execute():
 	yowList = Info.objects.all()
-	sheet4=open('news/csv/UserProfiles.csv','wb')
 	users=[]
 	for row in yowList:
 		if row.user_id not in users:
@@ -15,7 +14,6 @@ def execute():
 	columnCount = len(sheet2[0])
 
 	tagsCount = dict()
-
 	for row in sheet2[1:]:
 		for q in range(1,columnCount):
 			if int(row[q]) == 1: 
@@ -25,7 +23,7 @@ def execute():
 					tagsCount[int(row[0])] = 1
 	 
 	# print tagsCount[504]
-
+	sheet4=open('news/csv/UserProfiles.csv','wb')
 	a = csv.writer(sheet4)
 	a.writerow(x + sheet2[0][1:])
 	for user in users:
@@ -48,12 +46,12 @@ def execute():
 			j=0.0
 			for row in sheet2[1:]:
 				#print row[0]
-				if row[0] in upvotedArticles:
+				if int(row[0]) in upvotedArticles:
 					rating=2
-				elif row[0] in downvotedArticles:
+				elif int(row[0]) in downvotedArticles:
 					rating=-1
 					#print row[0]
-				elif row[0] in clickedArticles:
+				elif int(row[0]) in clickedArticles:
 					rating=1
 				else:
 					continue
