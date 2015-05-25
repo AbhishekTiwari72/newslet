@@ -8,6 +8,7 @@ import math
 from news.models import Hot,Dataset,Categories,Info
 
 def execute():
+    print "****************executing contentBased****************"
     openDataset = list(csv.reader(open('news/csv/articlesDataset2.csv', 'rU')))
     row_count2 = sum(1 for row in openDataset)
     tagDict = dict()

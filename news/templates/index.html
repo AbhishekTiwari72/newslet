@@ -15,9 +15,9 @@
   <div id="header">
     <ul>
       <li class="f"><a href="http://127.0.0.1:8000/news/">Home</a></li>
-      <li><a href="http://127.0.0.1:8000/news/about">About Us</a></li>
+<!--       <li><a href="http://127.0.0.1:8000/news/about">About Us</a></li>
       <li><a href="http://127.0.0.1:8000/news/page">Demo Page</a></li>
-      <li><a href="http://127.0.0.1:8000/news/contact">Contact Page</a></li>
+      <li><a href="http://127.0.0.1:8000/news/contact">Contact Page</a></li> -->
     </ul>
     <p class="links">
       {% if username != "none"  and username %}
@@ -37,7 +37,7 @@
     <div class="break"></div>
     <ol>
       {% for cat in categories|slice:":5"%}
-      <li><a href="#">{{ cat.category }}</a></li>
+      <li><a href="/news/category/{{ cat.category|slugify }}">{{ cat.category }}</a></li>
       {% endfor %}
     </ol>
     <div class="break"></div>
@@ -121,11 +121,11 @@
   <!-- END sidebar -->
   <!-- BEGIN footer -->
   <div id="footer">
-    <p>Copyright &copy; 2009 - <a href="#">Website Name</a> &middot; All Rights Reserved</p>
-    <p>Template by: <a href="http://www.wpthemedesigner.com/">WordPress Designer</a> | Get More <a href="#">Free CSS Templates</a></p>
+    <p>Copyright &copy; 2009 - <a href="#">Newslet- The WebNews</a> &middot; All Rights Reserved</p>
+    
   </div>
   <!-- END footer -->
 </div>
 <!-- END wrapper -->
-<div align=center>This template  downloaded form <a href='#'>free website templates</a></div></body>
+</body>
 </html>

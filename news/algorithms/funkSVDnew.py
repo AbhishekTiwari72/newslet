@@ -4,6 +4,7 @@ from news.models import Hot,Dataset,Categories,Info
 
 
 def execute():
+	print "****************executing funkSVD****************"
 	sheet = list(csv.reader(open('news/csv/articlesDataset2.csv','rU')))
 	sheet2 = list(csv.reader(open('news/csv/UserProfiles.csv','rU')))
 	yowList = Info.objects.all()
@@ -173,7 +174,7 @@ def execute():
 	diff = 1000000.0
 	for i in range(0,featuresCount):
 		
-		print "k=",i
+		# print "k=",i
 		for j in range(0,120):
 			# if j >= 2 and (diff < 0.002 or diff > -0.002): 
 			# 	print "break"
@@ -188,8 +189,11 @@ def execute():
 					item_id = yowList[p].doc_id
 					user_id = yowList[p].user_id
 					rating = yowList[p].user_like
+					if user_id in userOffest:
+						prediction = userOffest[user_id] + itemOffest[item_id] +dotProduct(user_id,item_id)
+					else:
+						continue
 
-					prediction = userOffest[user_id] + itemOffest[item_id] +dotProduct(user_id,item_id)
 					currError = rating-prediction
 					sse+=currError**2
 					n+=1
@@ -208,8 +212,8 @@ def execute():
 			if abs(diff-meanError)<0.0001:
 				break;
 			diff = meanError
-			print "epoch=",j
-			print "error=",meanError
+			# print "epoch=",j
+			# print "error=",meanError
 			
 			
 
@@ -272,7 +276,7 @@ def execute():
 
 	fCollab.writerows(dataRow)
 
-	print len(predictionMatrix[51])
+	# print len(predictionMatrix[51])
 
 
 

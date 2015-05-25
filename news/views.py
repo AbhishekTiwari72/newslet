@@ -379,7 +379,7 @@ def category(request,categoryName="technology"):
 			list1.append(x.downvotes)
 			
 		list2.append(list1)
-	print ArticlesFromCategory
+	# print ArticlesFromCategory
 	return render(request, 'category.html',{'categories' : cat,'category':categoryName.upper(),'username': session_user,'ArticlesFromCategory':ArticlesFromCategory,'popular': list2 })
 
 
@@ -413,8 +413,9 @@ def dislike(request,docid=504,userid=60):
 
 	
 	for row in sheet[1:]:
-		if ((int)(row[20]))==((int)(docid)) and (int)(row[23]) == userid:
+		if ((int)(row[0]))==((int)(docid)):
 			row[12]=int(row[12])+1
+			row[10]=int(row[10])+1
 			break;
 
 

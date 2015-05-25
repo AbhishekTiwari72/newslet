@@ -15,7 +15,10 @@ def epoch_seconds(date):
 def score(ups, downs, clicks):
     return ups*2 + downs*(-1) + clicks*1
 
-def hot(ups, downs, clicks, date):
+def hot(ups, downs, clicks, date, counter):
+    if counter == 0:
+        print "****************executing hotness algorithm****************"
+        
     """The hot formula. Should match the equivalent function in postgres."""
     if str(ups).lower() == 'upvotes':
     	print('errorvalue')

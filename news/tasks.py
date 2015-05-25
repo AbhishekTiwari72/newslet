@@ -14,23 +14,27 @@ def add(x, y):
 
 @task()
 def hotness():
+
 	sheet = Dataset.objects.all()
 	sheet2 = open('news/csv/hotnessData.csv', 'wb')
 	a = csv.writer(sheet2)
 	a.writerow(['docid', 'date', 'hottness'])
+	counter = 0
 	for row in sheet:
-	    hottnessVal = hotnessAlgo.hot(row.clicks, row.upvotes, row.downvotes, row.published)
+	    hottnessVal = hotnessAlgo.hot(row.clicks, row.upvotes, row.downvotes, row.published, counter)
 	    hotObj = Hot.objects.get(docid=row.docid)
 	    hotObj.hottness = hottnessVal
 	    hotObj.save()
 	    a.writerow([row.docid, row.published, hottnessVal])
+	    counter += 1
 	sheet2.close()
-	return "suscess"
+	return "****************hotness algorithm suscessfully executed****************"
 
 @task()
 def funk():
+	# userProfile.execute()
 	funkSVDnew.execute()
-	return "funk success"
+	return "****************funkSVD successfully executed****************"
 
 
 @task()
@@ -38,4 +42,4 @@ def contentBased():
 	vectorBased.execute()
 	userProfile.execute()
 	vectorBasedProduct.execute()
-	return "contentSuccess"
+	return "****************contentBased successfully executed****************"
