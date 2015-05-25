@@ -69,7 +69,6 @@ def execute():
     fTagsProfile.writerows(dataRow)
 
 
-
     fDf = open('news/csv/DocumentFrequency.csv', 'wb')
     fDf = csv.writer(fDf)
     fDf.writerows(dfDataRow)
